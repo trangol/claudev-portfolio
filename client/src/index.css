@@ -4,9 +4,9 @@
 
 /* ── Variables de tema Terminal ─────────────────────────────────────────── */
 :root {
-  --t-bg:           #080c08;
-  --t-surface:      #0d150d;
-  --t-card:         #0f1a0f;
+  --t-bg:           #050505;
+  --t-surface:      #0a0a0a;
+  --t-card:         #0a0a0a;
   --t-border:       rgba(0, 255, 136, 0.14);
   --t-border-hover: rgba(0, 255, 136, 0.38);
   --t-green:        #00ff88;
@@ -15,8 +15,8 @@
   --t-cyan:         #00e5ff;
   --t-amber:        #ffd600;
   --t-red:          #ff4d4d;
-  --t-text:         #d4f5d4;
-  --t-muted:        rgba(212, 245, 212, 0.45);
+  --t-text:         #d4e8d4;
+  --t-muted:        rgba(200, 220, 200, 0.45);
   --t-prompt:       rgba(0, 255, 136, 0.7);
 }
 

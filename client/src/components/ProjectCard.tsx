@@ -22,7 +22,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
       <div
         className="relative h-44 overflow-hidden flex items-center justify-center"
         style={{
-          background: 'linear-gradient(135deg, rgba(0,255,136,0.06) 0%, rgba(0,0,0,0) 60%, rgba(0,229,255,0.04) 100%)',
+          background: 'linear-gradient(135deg, rgba(0,255,136,0.03) 0%, rgba(0,0,0,0) 60%, rgba(0,229,255,0.02) 100%)',
           borderBottom: '1px solid var(--t-border)',
         }}
       >

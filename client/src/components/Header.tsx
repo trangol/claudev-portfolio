@@ -42,7 +42,7 @@ export const Header: FC<HeaderProps> = ({ activeFilter, onFilterChange }) => {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0.65rem 1.75rem',
-        background: 'rgba(8,12,8,0.92)',
+        background: 'rgba(5,5,5,0.94)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(0,255,136,0.12)',
