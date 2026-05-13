@@ -8,14 +8,39 @@ export const ProjectGrid: FC<ProjectGridProps> = ({ projects, loading }) => {
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[1,2,3].map(i => <div key={i} className="glass-card h-96 animate-pulse"><div className="h-48 bg-white/5"></div><div className="p-6 space-y-4"><div className="h-6 bg-white/10 rounded w-3/4"></div><div className="h-4 bg-white/10 rounded w-full"></div><div className="h-4 bg-white/10 rounded w-5/6"></div></div></div>)}
+        {[1, 2, 3].map(i => (
+          <div key={i} className="glass-card h-96 overflow-hidden" style={{ opacity: 0.6 }}>
+            <div
+              className="h-44 animate-pulse"
+              style={{ background: 'rgba(0,255,136,0.04)', borderBottom: '1px solid var(--t-border)' }}
+            />
+            <div className="p-5 space-y-3">
+              <div className="h-5 rounded animate-pulse" style={{ background: 'rgba(0,255,136,0.08)', width: '60%' }} />
+              <div className="h-3 rounded animate-pulse" style={{ background: 'rgba(0,255,136,0.05)', width: '100%' }} />
+              <div className="h-3 rounded animate-pulse" style={{ background: 'rgba(0,255,136,0.05)', width: '80%' }} />
+              <div className="h-3 rounded animate-pulse" style={{ background: 'rgba(0,255,136,0.05)', width: '90%' }} />
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
-  if (projects.length === 0) return <div className="text-center py-20 glass-card"><p className="text-gray-400 text-lg">No se encontraron proyectos en esta categoría</p></div>;
+
+  if (projects.length === 0) {
+    return (
+      <div className="glass-card text-center py-20 font-mono-term" style={{ color: 'var(--t-muted)' }}>
+        <p style={{ fontSize: '0.9rem' }}>
+          <span style={{ color: 'var(--t-green)' }}>$</span> find ./projects --phase="{'{filtro}'}" → 0 resultados
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map(project => <ProjectCard key={project.id} project={project} />)}
+      {projects.map(project => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
     </div>
   );
 };

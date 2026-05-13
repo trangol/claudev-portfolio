@@ -1,22 +1,39 @@
 import { FC } from 'react';
 import { ProjectPhase } from '../types/project';
 
-interface HeaderProps { activeFilter: ProjectPhase | undefined; onFilterChange: (filter: ProjectPhase | undefined) => void; }
+interface HeaderProps {
+  activeFilter: ProjectPhase | undefined;
+  onFilterChange: (filter: ProjectPhase | undefined) => void;
+}
 
 const filters: { label: string; value: ProjectPhase | undefined }[] = [
-  { label: 'Todos', value: undefined },
-  { label: 'En Producción', value: 'production' },
-  { label: 'En Desarrollo', value: 'development' },
-  { label: 'Prueba Conceptual', value: 'proof_of_concept' },
+  { label: 'todos',       value: undefined },
+  { label: 'producción',  value: 'production' },
+  { label: 'desarrollo',  value: 'development' },
+  { label: 'poc',         value: 'proof_of_concept' },
 ];
 
 const PORTAL_URL = 'https://sielco.cl';
 const SPCI_URL   = 'https://sielco.cl/spci';
 
+const navLinkBase: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.35rem',
+  padding: '0.28rem 0.75rem',
+  borderRadius: '4px',
+  fontFamily: '"JetBrains Mono", monospace',
+  fontSize: '0.68rem',
+  fontWeight: 500,
+  letterSpacing: '0.06em',
+  textDecoration: 'none',
+  transition: 'all 0.2s',
+};
+
 export const Header: FC<HeaderProps> = ({ activeFilter, onFilterChange }) => {
   return (
     <>
-      {/* ── Barra de navegación superior ── */}
+      {/* ── Navbar superior ─────────────────────────────────────── */}
       <nav style={{
         position: 'fixed',
         top: 0, left: 0, right: 0,
@@ -24,18 +41,18 @@ export const Header: FC<HeaderProps> = ({ activeFilter, onFilterChange }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0.75rem 1.75rem',
-        background: 'rgba(15, 10, 30, 0.85)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        padding: '0.65rem 1.75rem',
+        background: 'rgba(8,12,8,0.92)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(0,255,136,0.12)',
       }}>
-        {/* Logo SIELCO → vuelve al portal */}
+        {/* Logo SIELCO */}
         <a
           href={PORTAL_URL}
           style={{
             fontWeight: 900,
-            fontSize: '1.1rem',
+            fontSize: '1.05rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
             background: 'linear-gradient(100deg, #FF6B2B 0%, #fff 50%, #00BFFF 100%)',
@@ -50,87 +67,99 @@ export const Header: FC<HeaderProps> = ({ activeFilter, onFilterChange }) => {
         </a>
 
         {/* Links de navegación */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <a
             href={SPCI_URL}
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              padding: '0.3rem 0.85rem',
-              borderRadius: '999px',
-              fontSize: '0.72rem',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              background: 'rgba(255,107,43,0.12)',
-              color: '#FF9F5A',
-              border: '1px solid rgba(255,107,43,0.25)',
-              transition: 'all 0.2s',
+              ...navLinkBase,
+              background: 'rgba(255,107,43,0.1)',
+              color: '#ff9f5a',
+              border: '1px solid rgba(255,107,43,0.22)',
             }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,107,43,0.22)';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,107,43,0.12)';
-            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,107,43,0.2)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,107,43,0.1)'; }}
           >
-            🔥 SPCI
+            🔥 spci
           </a>
           <a
             href={PORTAL_URL}
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              padding: '0.3rem 0.85rem',
-              borderRadius: '999px',
-              fontSize: '0.72rem',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              background: 'rgba(255,255,255,0.06)',
-              color: 'rgba(255,255,255,0.55)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              transition: 'all 0.2s',
+              ...navLinkBase,
+              background: 'rgba(0,255,136,0.06)',
+              color: 'rgba(0,255,136,0.6)',
+              border: '1px solid rgba(0,255,136,0.14)',
             }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.9)';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)';
-            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t-green)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,255,136,0.6)'; }}
           >
-            ← Portal
+            ← portal
           </a>
         </div>
       </nav>
 
-      {/* ── Header principal (empuja por el navbar fijo) ── */}
-      <header className="mb-12 animate-slide-up" style={{ paddingTop: '5rem' }}>
-        <div className="text-center mb-8">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">ClauDev</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Casos de éxito y proyectos que demuestran mi capacidad para transformar
-            ideas en soluciones digitales robustas
+      {/* ── Header principal ────────────────────────────────────── */}
+      <header className="mb-12 animate-slide-up" style={{ paddingTop: '5.5rem' }}>
+
+        {/* Título */}
+        <div className="text-center mb-10">
+          <div
+            className="font-mono-term mb-2"
+            style={{ fontSize: '0.75rem', color: 'var(--t-green-muted)', letterSpacing: '0.2em' }}
+          >
+            ~/portafolio
+          </div>
+          <h1
+            className="gradient-text font-mono-term font-bold mb-4"
+            style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', lineHeight: 1.1 }}
+          >
+            ClauDev
+            <span
+              style={{
+                display: 'inline-block',
+                width: '0.06em',
+                height: '0.85em',
+                background: 'var(--t-green)',
+                marginLeft: '4px',
+                verticalAlign: 'middle',
+                animation: 'blink 1.1s step-end infinite',
+              }}
+              aria-hidden="true"
+            />
+          </h1>
+          <p
+            className="max-w-2xl mx-auto leading-relaxed"
+            style={{ fontSize: '1rem', color: 'var(--t-muted)', fontFamily: '"JetBrains Mono", monospace', letterSpacing: '0.02em' }}
+          >
+            // casos de éxito y proyectos que demuestran capacidad<br />
+            // para transformar ideas en soluciones digitales robustas
           </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-3">
-          {filters.map(filter => (
-            <button
-              key={filter.label}
-              onClick={() => onFilterChange(filter.value)}
-              className={`px-5 py-2 rounded-full transition-all duration-200 ${
-                activeFilter === filter.value
-                  ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg'
-                  : 'glass-card text-gray-300 hover:bg-white/20'
-              }`}
-            >
-              {filter.label}
-            </button>
-          ))}
+
+        {/* Filtros */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {filters.map(filter => {
+            const active = activeFilter === filter.value;
+            return (
+              <button
+                key={filter.label}
+                onClick={() => onFilterChange(filter.value)}
+                className="font-mono-term transition-all duration-200"
+                style={{
+                  padding: '0.3rem 1rem',
+                  borderRadius: '4px',
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.08em',
+                  border: active ? '1px solid var(--t-green)' : '1px solid var(--t-border)',
+                  background: active ? 'rgba(0,255,136,0.12)' : 'transparent',
+                  color: active ? 'var(--t-green)' : 'var(--t-muted)',
+                  cursor: 'pointer',
+                  boxShadow: active ? '0 0 10px rgba(0,255,136,0.15)' : 'none',
+                }}
+              >
+                {active ? '> ' : ''}{filter.label}
+              </button>
+            );
+          })}
         </div>
       </header>
     </>

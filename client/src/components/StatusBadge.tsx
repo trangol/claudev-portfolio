@@ -3,17 +3,54 @@ import { ProjectPhase } from '../types/project';
 
 interface StatusBadgeProps { phase: ProjectPhase; }
 
-const phaseConfig: Record<ProjectPhase, { label: string; bgColor: string; icon: string }> = {
-  production: { label: 'En Producción', bgColor: 'bg-emerald-500/20 border-emerald-400/30 text-emerald-300', icon: '🚀' },
-  development: { label: 'En Desarrollo', bgColor: 'bg-blue-500/20 border-blue-400/30 text-blue-300', icon: '⚙️' },
-  proof_of_concept: { label: 'Prueba Conceptual', bgColor: 'bg-amber-500/20 border-amber-400/30 text-amber-300', icon: '🧪' },
+const phaseConfig: Record<ProjectPhase, { label: string; style: React.CSSProperties }> = {
+  production: {
+    label: 'producción',
+    style: {
+      background: 'rgba(0,255,136,0.1)',
+      color: '#00ff88',
+      border: '1px solid rgba(0,255,136,0.3)',
+    },
+  },
+  development: {
+    label: 'desarrollo',
+    style: {
+      background: 'rgba(0,229,255,0.1)',
+      color: '#00e5ff',
+      border: '1px solid rgba(0,229,255,0.3)',
+    },
+  },
+  proof_of_concept: {
+    label: 'poc',
+    style: {
+      background: 'rgba(255,214,0,0.1)',
+      color: '#ffd600',
+      border: '1px solid rgba(255,214,0,0.3)',
+    },
+  },
 };
 
 export const StatusBadge: FC<StatusBadgeProps> = ({ phase }) => {
-  const config = phaseConfig[phase];
+  const { label, style } = phaseConfig[phase];
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium border backdrop-blur-sm ${config.bgColor}`}>
-      <span>{config.icon}</span><span>{config.label}</span>
+    <span
+      style={{
+        ...style,
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.3rem',
+        padding: '0.15rem 0.55rem',
+        borderRadius: '4px',
+        fontFamily: '"JetBrains Mono", monospace',
+        fontSize: '0.65rem',
+        fontWeight: 500,
+        letterSpacing: '0.06em',
+        whiteSpace: 'nowrap',
+        flexShrink: 0,
+      }}
+    >
+      <span style={{ fontSize: '0.5rem' }}>●</span>
+      {label}
     </span>
   );
 };
