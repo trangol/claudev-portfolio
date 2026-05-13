@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { ProjectPhase } from '../types/project';
 
 interface StatusBadgeProps { phase: ProjectPhase; }
@@ -9,7 +9,7 @@ const phaseConfig: Record<ProjectPhase, { label: string; bgColor: string; icon: 
   proof_of_concept: { label: 'Prueba Conceptual', bgColor: 'bg-amber-500/20 border-amber-400/30 text-amber-300', icon: '🧪' },
 };
 
-export const StatusBadge: React.FC<StatusBadgeProps> = ({ phase }) => {
+export const StatusBadge: FC<StatusBadgeProps> = ({ phase }) => {
   const config = phaseConfig[phase];
   return (
     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium border backdrop-blur-sm ${config.bgColor}`}>

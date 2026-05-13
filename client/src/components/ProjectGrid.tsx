@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import { Project } from '../types/project';
 import { ProjectCard } from './ProjectCard';
 
 interface ProjectGridProps { projects: Project[]; loading?: boolean; }
 
-export const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, loading }) => {
+export const ProjectGrid: FC<ProjectGridProps> = ({ projects, loading }) => {
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

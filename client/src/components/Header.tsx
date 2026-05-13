@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { ProjectPhase } from '../types/project';
 
 interface HeaderProps { activeFilter: ProjectPhase | undefined; onFilterChange: (filter: ProjectPhase | undefined) => void; }
@@ -10,7 +10,7 @@ const filters: { label: string; value: ProjectPhase | undefined }[] = [
   { label: 'Prueba Conceptual', value: 'proof_of_concept' },
 ];
 
-export const Header: React.FC<HeaderProps> = ({ activeFilter, onFilterChange }) => {
+export const Header: FC<HeaderProps> = ({ activeFilter, onFilterChange }) => {
   return (
     <header className="mb-12 animate-slide-up">
       <div className="text-center mb-8">

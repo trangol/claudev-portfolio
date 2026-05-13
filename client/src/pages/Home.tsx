@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import { Header } from '../components/Header';
 import { ProjectGrid } from '../components/ProjectGrid';
 import { Footer } from '../components/Footer';
 import { useProjects } from '../hooks/useProjects';
 
-export const Home: React.FC = () => {
+export const Home: FC = () => {
   const { projects, loading, error, filter, setFilter } = useProjects();
   if (error) {
     return (

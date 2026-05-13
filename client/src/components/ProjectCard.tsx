@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import { Project } from '../types/project';
 import { StatusBadge } from './StatusBadge';
 
 interface ProjectCardProps { project: Project; }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   const getStackCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
       frontend: 'bg-cyan-500/20 text-cyan-300',
