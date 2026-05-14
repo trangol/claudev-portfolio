@@ -112,6 +112,31 @@ const projects = [
     url: 'https://intranet.sielco.cl',
     imageUrl: '/images/sielco-demo.jpg',
   },
+  {
+    id: 'ya-no-lo-uso',
+    name: 'Ya No Lo Uso',
+    description:
+      'Marketplace de compraventa de artículos de segunda mano: publica lo que ya no usas, encuentra lo que necesitas. Plataforma de clasificados con geolocalización y chat integrado.',
+    objectives: [
+      'Facilitar la economía circular entre particulares',
+      'Publicación rápida de artículos con fotos y geolocalización',
+      'Sistema de chat entre comprador y vendedor en tiempo real',
+    ],
+    stack: [
+      { name: 'React Native', category: 'frontend' },
+      { name: 'Node.js',      category: 'backend'  },
+      { name: 'MongoDB',      category: 'database' },
+      { name: 'Firebase',     category: 'other'    },
+    ],
+    phase: 'proof_of_concept',
+    status: 'archived',
+    url: 'https://github.com/trangol/ya-no-lo-uso',
+    imageUrl: '/images/ya-no-lo-uso-demo.jpg',
+    additionalInfo: {
+      githubUrl: 'https://github.com/trangol/ya-no-lo-uso',
+      isOpenSource: true,
+    },
+  },
 ];
 
 module.exports = { projects };
