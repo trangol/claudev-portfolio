@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Header } from '../components/Header';
 import { ProjectGrid } from '../components/ProjectGrid';
 import { Footer } from '../components/Footer';
+import { AboutSection } from '../components/AboutSection';
 import { useProjects } from '../hooks/useProjects';
 
 export const Home: FC = () => {
@@ -20,6 +21,7 @@ export const Home: FC = () => {
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         <Header activeFilter={filter} onFilterChange={setFilter} />
+        <AboutSection />
         <ProjectGrid projects={projects} loading={loading} />
         <Footer />
       </div>
