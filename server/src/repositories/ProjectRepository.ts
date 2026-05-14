@@ -120,7 +120,7 @@ const rawProjects = [
     ],
     phase: 'proof_of_concept',
     status: 'archived',
-    url: 'https://github.com/trangol/ya-no-lo-uso',
+    url: 'https://ya-no-lo-uso.vercel.app/',
     imageUrl: '/images/ya-no-lo-uso-demo.jpg',
     additionalInfo: {
       githubUrl: 'https://github.com/trangol/ya-no-lo-uso',
